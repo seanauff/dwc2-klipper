@@ -51,4 +51,4 @@ USER root
 
 COPY runklipper.py /
 
-CMD ["/runklipper.py"]
+CMD ["/usr/bin/python","/runklipper.py"]
