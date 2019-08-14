@@ -29,7 +29,7 @@ RUN git clone https://github.com/KevinOConnor/klipper && \
     git clone https://github.com/Stephan3/dwc2-for-klipper.git && \
     ln -s ~/dwc2-for-klipper/web_dwc2.py ~/klipper/klippy/extras/web_dwc2.py && \
     rm klipper/klippy/gcode.py && \
-    wget -O klipper/klippy/gcode.py https://raw.githubusercontent.com/Stephan3/klipper/master/klippy/gcode.py && \
+    wget -O klipper/klippy/gcode.py https://raw.githubusercontent.com/KevinOConnor/klipper/f13010708fbc9db9e0e586d592dfc1d7ed6aac81/klippy/gcode.py && \
     mkdir -p /home/dwc2-klipper/sdcard/dwc2/web
 
 WORKDIR /home/dwc2-klipper/sdcard/dwc2/web
