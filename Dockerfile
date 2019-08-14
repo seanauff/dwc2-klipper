@@ -31,7 +31,8 @@ RUN git clone https://github.com/KevinOConnor/klipper && \
     ./klippy-env/bin/pip install tornado==5.1.1 && \
     git clone https://github.com/Stephan3/dwc2-for-klipper.git && \
     ln -s ~/dwc2-for-klipper/web_dwc2.py ~/klipper/klippy/extras/web_dwc2.py && \
-    wget https://raw.githubusercontent.com/Stephan3/klipper/master/klippy/gcode.py > klipper/klippy/gcode.py && \
+    rm klipper/klippy/gcode.py && \
+    wget -O klipper/klippy/gcode.py https://raw.githubusercontent.com/Stephan3/klipper/master/klippy/gcode.py && \
     cp klipper/config/${KLIPPER_CONFIG} /home/dwc2-klipper/printer.cfg && \
     mkdir -p /home/dwc2-klipper/sdcard/dwc2/web
 
