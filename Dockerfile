@@ -43,8 +43,6 @@ WORKDIR /home/dwc2-klipper/sdcard/dwc2/web
 RUN wget https://github.com/chrishamm/DuetWebControl/releases/download/2.0.0-RC5/DuetWebControl.zip && \
     unzip *.zip && for f_ in $(find . | grep '.gz');do gunzip ${f_};done
 
-VOLUME /home/dwc2-klipper/config
-
 EXPOSE 4750
 
 USER root
