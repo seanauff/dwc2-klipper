@@ -13,7 +13,7 @@ docker pull seanauff/dwc2-klipper:[tag]
 Start the container:
 
 ```shell
-docker run -d --device /dev/ttyUSB0:/dev/ttyUSB0 seanauff/dwc2-klipper:[tag]
+docker run -d --device /dev/ttyUSB0:/dev/ttyUSB0 -v [some/path/on/host]:/home/dwc2-klipper/config seanauff/dwc2-klipper:[tag]
 ```
 
 ### Build the image yourself
