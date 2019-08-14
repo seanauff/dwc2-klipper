@@ -15,6 +15,10 @@ RUN apt-get update && \
 RUN mkdir /home/dwc2-klipper
 WORKDIR /home/dwc2-klipper
 
+#Create an dwc2-klipper user
+RUN useradd -ms /bin/bash dwc2-klipper && adduser dwc2-klipper dialout
+USER dwc2-klipper
+
 RUN git clone https://github.com/KevinOConnor/klipper
 RUN ./klipper/scripts/install-octopi.sh
 
@@ -42,6 +46,8 @@ RUN unzip *.zip && for f_ in $(find . | grep '.gz');do gunzip ${f_};done
 VOLUME /home/dwc2-klipper
 
 EXPOSE 4750
+
+USER root
 
 COPY runklipper.py /
 
