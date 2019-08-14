@@ -22,9 +22,6 @@ USER dwc2-klipper
 
 WORKDIR /home/dwc2-klipper
 
-# config file to use. see list here: https://github.com/KevinOConnor/klipper/tree/master/config
-ARG KLIPPER_CONFIG=example.cfg
-
 RUN git clone https://github.com/KevinOConnor/klipper && \
     ./klipper/scripts/install-octopi.sh && \
     virtualenv ./klippy-env && \
@@ -33,7 +30,6 @@ RUN git clone https://github.com/KevinOConnor/klipper && \
     ln -s ~/dwc2-for-klipper/web_dwc2.py ~/klipper/klippy/extras/web_dwc2.py && \
     rm klipper/klippy/gcode.py && \
     wget -O klipper/klippy/gcode.py https://raw.githubusercontent.com/Stephan3/klipper/master/klippy/gcode.py && \
-    cp klipper/config/${KLIPPER_CONFIG} /home/dwc2-klipper/printer.cfg && \
     mkdir -p /home/dwc2-klipper/sdcard/dwc2/web
 
 WORKDIR /home/dwc2-klipper/sdcard/dwc2/web
