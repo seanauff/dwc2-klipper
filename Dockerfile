@@ -12,6 +12,11 @@ RUN apt-get update && \
     libv4l-dev \
     cmake
 
+# enable klipper to install
+RUN apt-get install -y sudo
+COPY klippy.sudoers /etc/sudoers.d/klippy
+RUN useradd -ms /bin/bash klippy
+
 #Create an dwc2-klipper user
 RUN useradd -ms /bin/bash dwc2-klipper && adduser dwc2-klipper dialout
 USER dwc2-klipper
