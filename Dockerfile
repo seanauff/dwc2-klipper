@@ -39,7 +39,7 @@ RUN echo "$gcode" > klipper/klippy/gcode.py
 
 # config file to use. see list here: https://github.com/KevinOConnor/klipper/tree/master/config
 ARG KLIPPER_CONFIG=example.cfg
-RUN cp klipper/config/${KLIPPER_CONFIG}} /home/dwc2-klipper/printer.cfg
+RUN cp klipper/config/${KLIPPER_CONFIG} /home/dwc2-klipper/printer.cfg
 
 RUN mkdir -p /home/dwc2-klipper/sdcard/dwc2/web
 WORKDIR /home/dwc2-klipper/sdcard/dwc2/web
