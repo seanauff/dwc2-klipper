@@ -12,12 +12,11 @@ RUN apt-get update && \
     libv4l-dev \
     cmake
 
-RUN mkdir /home/dwc2-klipper
-WORKDIR /home/dwc2-klipper
-
 #Create an dwc2-klipper user
 RUN useradd -ms /bin/bash dwc2-klipper && adduser dwc2-klipper dialout
 USER dwc2-klipper
+
+WORKDIR /home/dwc2-klipper
 
 RUN git clone https://github.com/KevinOConnor/klipper
 RUN ./klipper/scripts/install-octopi.sh
