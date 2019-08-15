@@ -2,6 +2,23 @@
 
 dwc2-klipper is a Docker image for running [DWC2] and [Klipper] 3d Printer controllers. It is design to run on Raspberry Pi or similar.
 
+## Prepare you printer.cfg file
+
+```
+[virtual_sdcard]
+path: /home/dwc2-klipper/sdcard
+
+[web_dwc2]
+## optional - defaulting to Klipper
+printer_name: Klipper
+# optional - defaulting to 0.0.0.0
+listen_adress: 0.0.0.0
+# needed - use above 1024 as nonroot
+listen_port: 4750
+# optional defaulting to dwc2/web. Its a folder relative to your virtual sdcard.
+web_path: dwc2/web
+```
+
 ## Running via Docker
 
 Pull the image. If using raspberry pi or similar use `arm` in place of `[tag]`. The `latest` tag will pull the `amd64` image:
