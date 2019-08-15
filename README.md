@@ -6,6 +6,8 @@ dwc2-klipper is a Docker image for running [DWC2] and [Klipper] 3d Printer contr
 
 ## Prepare you printer.cfg file
 
+Copy and appropriate config file from [here](https://github.com/KevinOConnor/klipper/tree/master/config) and add the following lines to it:
+
 ```toml
 [virtual_sdcard]
 path: /home/dwc2-klipper/sdcard
@@ -20,6 +22,8 @@ listen_port: 4750
 # optional defaulting to dwc2/web. Its a folder relative to your virtual sdcard.
 web_path: dwc2/web
 ```
+
+Rename the file `printer.cfg` and place in a known place on your docker host, which you will mount into the container when starting the container.
 
 ## Running via Docker
 
