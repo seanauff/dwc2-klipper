@@ -2,6 +2,8 @@
 
 dwc2-klipper is a Docker image for running [DWC2] and [Klipper] 3d Printer controllers. It is design to run on Raspberry Pi or similar.
 
+[More info](https://klipper.info/klipper-+-dwc2-1/things-to-know-about-klipper-and-dwc2)
+
 ## Prepare you printer.cfg file
 
 ```
