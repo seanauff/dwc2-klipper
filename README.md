@@ -23,7 +23,7 @@ listen_port: 4750
 web_path: dwc2/web
 ```
 
-Rename the file `printer.cfg` and place in a known place on your docker host, which you will mount into the container when starting the container.
+Rename the file `printer.cfg` and place in a known place on your docker host, which you will mount when starting the container.
 
 ## Running via Docker
 
