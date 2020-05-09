@@ -6,7 +6,7 @@ dwc2-klipper is a Docker image for running [DWC2] and [Klipper] 3d Printer contr
 
 [DockerHub Image](https://hub.docker.com/r/seanauff/dwc2-klipper)
 
-## Prepare you printer.cfg file
+## Prepare your printer.cfg file
 
 Copy an appropriate config file from [here](https://github.com/KevinOConnor/klipper/tree/master/config) and add the following lines to it:
 
@@ -29,7 +29,7 @@ Rename the file `printer.cfg` and place in a known place on your docker host, wh
 
 ## Running via Docker
 
-Pull the image. If using raspberry pi or similar use `arm` in place of `[tag]`. The `latest` tag will pull the `amd64` image:
+Pull the image. If using raspberry pi or similar use `arm` in place of `[tag]`. `amd64` is also available:
 
 ```shell
 docker pull seanauff/dwc2-klipper:[tag]
