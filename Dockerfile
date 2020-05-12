@@ -7,7 +7,6 @@ RUN apt-get update && \
     gzip \
     tar \
     build-essential \
-    libjpeg62-turbo-dev \
     imagemagick \
     libv4l-dev \
     cmake \
