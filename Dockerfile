@@ -32,12 +32,8 @@ RUN git clone https://github.com/KevinOConnor/klipper && \
 RUN virtualenv ./klippy-env && \
     ./klippy-env/bin/pip install tornado==5.1.1
 
-RUN git clone https://github.com/Stephan3/dwc2-for-klipper.git && \
+RUN git clone https://github.com/pluuuk/dwc2-for-klipper.git && \
     ln -s ~/dwc2-for-klipper/web_dwc2.py ~/klipper/klippy/extras/web_dwc2.py
-
-# patch gcode.py
-RUN cp klipper/klippy/gcode.py klipper/klippy/gcode.py.bak
-COPY gcode.py klipper/klippy/
 
 RUN mkdir -p /home/dwc2-klipper/sdcard/dwc2/web && \
     mkdir -p /home/dwc2-klipper/sdcard/sys
