@@ -11,7 +11,8 @@ RUN apt-get update && \
     libv4l-dev \
     cmake \
     sudo \
-    ca-certificates
+    ca-certificates \
+    unzip
 
 # This is to allow the klipper install script to run without error
 RUN ln -s /bin/true /bin/systemctl
