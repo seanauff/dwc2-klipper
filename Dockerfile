@@ -1,4 +1,4 @@
-FROM python:2.7
+FROM ubuntu:18.04
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -11,7 +11,9 @@ RUN apt-get update && \
     imagemagick \
     libv4l-dev \
     cmake \
-    sudo
+    sudo \
+    python-virtualenv \
+    python-dev
 
 # enable klipper to install by creating users
 COPY klippy.sudoers /etc/sudoers.d/klippy
@@ -23,7 +25,7 @@ USER dwc2-klipper
 WORKDIR /home/dwc2-klipper
 
 RUN git clone https://github.com/KevinOConnor/klipper && \
-    ./klipper/scripts/install-octopi.sh
+    ./klipper/scripts/install-ubuntu-18.04.sh
 
 RUN virtualenv ./klippy-env && \
     ./klippy-env/bin/pip install tornado==5.1.1
