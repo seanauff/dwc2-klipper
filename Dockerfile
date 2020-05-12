@@ -31,14 +31,19 @@ RUN virtualenv ./klippy-env && \
 RUN git clone https://github.com/Stephan3/dwc2-for-klipper.git && \
     ln -s ~/dwc2-for-klipper/web_dwc2.py ~/klipper/klippy/extras/web_dwc2.py
 
-#RUN rm klipper/klippy/gcode.py
-COPY gcode.py klipper/klippy/
+# patch gcode.py
+RUN gcode=$(sed 's/self.bytes_read = 0/self.bytes_read = 0\n        self.respond_callbacks = []/g' klipper/klippy/gcode.py) && \
+    gcode=$(echo "$gcode" | sed 's/# Response handling/def register_respond_callback(self, callback):\n        self.respond_callbacks.append(callback)/') && \
+    gcode=$(echo "$gcode" | sed 's/os.write(self.fd, msg+"\\n")/os.write(self.fd, msg+"\\n")\n            for callback in self.respond_callbacks:\n                callback(msg+"\\n")/') && \
+    echo "$gcode" > klipper/klippy/gcode.py
+
     
-RUN mkdir -p /home/dwc2-klipper/sdcard/dwc2/web
+RUN mkdir -p /home/dwc2-klipper/sdcard/dwc2/web && \
+    mkdir -p /home/dwc2-klipper/sdcard/sys
 
 WORKDIR /home/dwc2-klipper/sdcard/dwc2/web
 
-RUN wget https://github.com/chrishamm/DuetWebControl/releases/download/2.0.0-RC5/DuetWebControl.zip && \
+RUN wget https://github.com/chrishamm/DuetWebControl/releases/download/2.1.7/DuetWebControl-SD.zip && \
     unzip *.zip && for f_ in $(find . | grep '.gz');do gunzip ${f_};done
 
 WORKDIR /home/dwc2-klipper
