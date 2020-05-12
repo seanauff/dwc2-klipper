@@ -36,9 +36,10 @@ RUN git clone https://github.com/Stephan3/dwc2-for-klipper.git && \
     ln -s ~/dwc2-for-klipper/web_dwc2.py ~/klipper/klippy/extras/web_dwc2.py
 
 # patch gcode.py
-RUN gcode=$(sed 's/self.bytes_read = 0/self.bytes_read = 0\n        self.respond_callbacks = []/g' klipper/klippy/gcode.py) && \
-    gcode=$(echo "$gcode" | sed 's/# Response handling/def register_respond_callback(self, callback):\n        self.respond_callbacks.append(callback)/') && \
-    gcode=$(echo "$gcode" | sed 's/os.write(self.fd, msg+"\\n")/os.write(self.fd, msg+"\\n")\n            for callback in self.respond_callbacks:\n                callback(msg+"\\n")/') && \
+RUN cp klipper/klippy/gcode.py klipper/klippy/gcode.py.bak && \
+    gcode=$(sed "s/self.bytes_read = 0/self.bytes_read = 0\n        self.respond_callbacks = []/g" klipper/klippy/gcode.py) && \
+    gcode=$(echo "$gcode" | sed "s/# Response handling/def register_respond_callback(self, callback):\n        self.respond_callbacks.append(callback)/") && \
+    gcode=$(echo "$gcode" | sed "s/os.write(self.fd, msg+\"\\n\")/os.write(self.fd, msg+\"\\n\")\n            for callback in self.respond_callbacks:\n                callback(msg+\"\\n\")/") && \
     echo "$gcode" > klipper/klippy/gcode.py
 
 RUN mkdir -p /home/dwc2-klipper/sdcard/dwc2/web && \
