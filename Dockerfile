@@ -10,9 +10,7 @@ RUN apt-get update && \
     imagemagick \
     libv4l-dev \
     cmake \
-    sudo \
-    python-virtualenv \
-    python-dev
+    sudo
 
 # enable klipper to install by creating users
 COPY klippy.sudoers /etc/sudoers.d/klippy
