@@ -10,7 +10,8 @@ RUN apt-get update && \
     imagemagick \
     libv4l-dev \
     cmake \
-    sudo
+    sudo \
+    ca-certificates
 
 # This is to allow the klipper install script to run without error
 RUN ln -s /bin/true /bin/systemctl
