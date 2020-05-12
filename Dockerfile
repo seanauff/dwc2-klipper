@@ -12,6 +12,9 @@ RUN apt-get update && \
     cmake \
     sudo
 
+# This is to allow the klipper install script to run without error
+RUN ln -s /bin/true /bin/systemctl
+
 # enable klipper to install by creating users
 COPY klippy.sudoers /etc/sudoers.d/klippy
 RUN useradd -ms /bin/bash klippy && \
@@ -36,7 +39,6 @@ RUN gcode=$(sed 's/self.bytes_read = 0/self.bytes_read = 0\n        self.respond
     gcode=$(echo "$gcode" | sed 's/os.write(self.fd, msg+"\\n")/os.write(self.fd, msg+"\\n")\n            for callback in self.respond_callbacks:\n                callback(msg+"\\n")/') && \
     echo "$gcode" > klipper/klippy/gcode.py
 
-    
 RUN mkdir -p /home/dwc2-klipper/sdcard/dwc2/web && \
     mkdir -p /home/dwc2-klipper/sdcard/sys
 
