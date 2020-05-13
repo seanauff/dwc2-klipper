@@ -1,0 +1,14 @@
+version: '2'
+services:
+  dwc2-klipper:
+    image: "seanauff/dwc2-klipper:arm"
+    container_name: "dwc2-klipper"
+    devices:
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
+    ports:
+      - "4750:4750"
+    volumes:
+      - "/home/pi/docker/dwc2-klipper:/home/dwc2-klipper/config"
+    environment:
+      TZ: America/New_York
+    restart: unless-stopped
