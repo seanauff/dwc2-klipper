@@ -6,6 +6,8 @@ dwc2-klipper is a Docker image for running [DWC2] and [Klipper] 3d Printer contr
 
 [DockerHub Image](https://hub.docker.com/r/seanauff/dwc2-klipper)
 
+Because of recent changes to Klipper, this utilizes the fork from pluuuk as discussed [here](https://github.com/Stephan3/dwc2-for-klipper/issues/73).
+
 ## Prepare your printer.cfg file
 
 Copy an appropriate config file from [here](https://github.com/KevinOConnor/klipper/tree/master/config) and add the following lines to it:
@@ -38,7 +40,7 @@ docker pull seanauff/dwc2-klipper:[tag]
 Start the container:
 
 ```shell
-docker run -d --device /dev/ttyUSB0:/dev/ttyUSB0 -v [some/path/on/host]:/home/dwc2-klipper/config seanauff/dwc2-klipper:[tag]
+docker run -d --device /dev/ttyUSB0:/dev/ttyUSB0 -v [some/path/on/host]:/home/dwc2-klipper/config -p 4750:4750 seanauff/dwc2-klipper:[tag]
 ```
 
 ### Build the image yourself
