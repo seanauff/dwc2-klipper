@@ -49,6 +49,9 @@ EXPOSE 4750
 
 USER root
 
+# Clean up hack for install script
+RUN rm -f /bin/systemctl
+
 COPY runklipper.py /
 
 CMD ["/usr/bin/python","/runklipper.py"]
