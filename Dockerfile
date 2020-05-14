@@ -12,7 +12,8 @@ RUN apt-get update && \
     cmake \
     sudo \
     ca-certificates \
-    unzip
+    unzip \
+    socat
 
 # This is to allow the klipper install script to run without error
 RUN ln -s /bin/true /bin/systemctl
